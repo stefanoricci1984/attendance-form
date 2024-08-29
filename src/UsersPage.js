@@ -13,7 +13,7 @@ const UsersPage = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/users');
+                const response = await axios.get('https://attendance-app-backend-two.vercel.app/api/users');
                 setUsers(response.data);
             } catch (error) {
                 console.error('Errore durante il recupero dei dati:', error);
