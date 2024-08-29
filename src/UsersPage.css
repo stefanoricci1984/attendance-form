@@ -1,0 +1,121 @@
+/* UsersPage.css */
+.container {
+    padding: 20px;
+    background-color: #121212; /* Sfondo nero */
+    color: #ffffff; /* Testo bianco per contrasto */
+    min-height: 100vh; /* Assicurati che la pagina occupi almeno l'altezza della finestra */
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Spaziatura tra gli elementi */
+    margin-bottom: 20px;
+}
+
+label {
+    color: #ffffff;
+    margin: 0 5px;
+    display: flex;
+    flex-direction: column;
+    width: 150px; /* Larghezza fissa per le label */
+}
+
+select {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: #ffffff;
+    font-size: 1em; /* Dimensione del testo per le combobox */
+    width: 150px; /* Stessa larghezza per le combobox */
+}
+
+.nom {
+    width: 100%; /* Larghezza completa per combobox e input */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #333; /* Sfondo degli input */
+    color: #ffffff; /* Testo degli input */
+    font-size: 1em; /* Dimensione del testo per combobox e input */
+}
+
+.bty {
+    width: 30%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4CAF50; /* Verde per il pulsante */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em; /* Dimensione del testo per il pulsante */
+}
+
+button {
+    padding: 8px 12px; /* Riduci il padding per il pulsante */
+    background-color: #4CAF50; /* Verde per il pulsante */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em; /* Riduci la dimensione del testo per il pulsante */
+}
+
+    button:hover {
+        background-color: #45a049; /* Colore verde scuro al passaggio del mouse */
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto; /* Permette lo scorrimento orizzontale se necessario */
+    font-size: 0.9em; /* Aumenta la dimensione del testo della tabella */
+}
+
+thead th {
+    background-color: #1e1e1e; /* Sfondo grigio scuro per l'intestazione */
+    color: #ffffff;
+    padding: 8px 12px; /* Aumenta il padding per le intestazioni */
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #1e1e1e; /* Sfondo grigio scuro per righe pari */
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #333; /* Sfondo grigio scuro per righe dispari */
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 8px 12px; /* Aumenta il padding per le celle */
+    text-align: center;
+    word-break: break-word; /* Gestisce le parole lunghe */
+}
+
+th {
+    font-size: 0.7em; /* Aumenta la dimensione del testo per l'intestazione */
+}
+
+td {
+    font-size: 0.75em; /* Aumenta leggermente la dimensione del testo per le celle */
+}
+
+@media (max-width: 768px) {
+    th, td {
+        font-size: 0.75em; /* Riduci ulteriormente la dimensione del testo su schermi piccoli */
+    }
+}
