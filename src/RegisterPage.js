@@ -12,7 +12,7 @@ const RegisterPage = () => {
         e.preventDefault();
 
         try {
-            await axios.post('https://attendance-app-backend-ashen.vercel.app/api/register', {
+            await axios.post('https://attendance-app-backend-nine.vercel.app/api/register', {
                 name,
                 email,
                 password,
