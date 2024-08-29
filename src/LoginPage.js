@@ -15,7 +15,7 @@ const LoginPage = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('https://attendance-app-backend-mu.vercel.app/api/login', {
+            const response = await axios.post('https://attendance-app-backend-theta.vercel.app/api/login', {
                 email,
                 password,
             });
