@@ -135,9 +135,11 @@ const FormPage = () => {
     return (
         <div className="container">
             <h1>Gestione Giorni Lavorativi Neotech-Form</h1>
-            <button className="lgt" onClick={handleLogout} style={{ marginBottom: "15px" }}>
-                Logout
-            </button>
+            <div class="lgt-container">
+                <button className="lgt" onClick={handleLogout} style={{ marginBottom: "15px" }}>
+                    Logout
+                </button>
+            </div>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>
