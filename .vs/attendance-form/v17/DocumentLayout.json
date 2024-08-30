@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\FormPage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\FormPage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\FormPage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\FormPage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\UsersPage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\UsersPage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\LoginPage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\LoginPage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\RegisterPage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\RegisterPage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\UsersPage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -35,16 +19,16 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\LoginPage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\public\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\UserDataContext.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\UserDataContext.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\public\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,111 +46,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormPage.css",
-              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\FormPage.css",
-              "RelativeDocumentMoniker": "src\\FormPage.css",
-              "ToolTip": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\FormPage.css",
-              "RelativeToolTip": "src\\FormPage.css",
-              "ViewState": "AQIAADMAAAAAAAAAAAAAAEMAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-08-28T21:46:32.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RegisterPage.css",
-              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\RegisterPage.css",
-              "RelativeDocumentMoniker": "src\\RegisterPage.css",
-              "ToolTip": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\RegisterPage.css",
-              "RelativeToolTip": "src\\RegisterPage.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-08-28T21:12:57.34Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "LoginPage.css",
-              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\LoginPage.css",
-              "RelativeDocumentMoniker": "src\\LoginPage.css",
-              "ToolTip": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\LoginPage.css",
-              "RelativeToolTip": "src\\LoginPage.css",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACEAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-08-28T21:07:02.173Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "LoginPage.js",
               "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\LoginPage.js",
               "RelativeDocumentMoniker": "src\\LoginPage.js",
               "ToolTip": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\LoginPage.js",
               "RelativeToolTip": "src\\LoginPage.js",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAACAAAAA3AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-08-28T19:51:05.005Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UsersPage.css",
-              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\UsersPage.css",
-              "RelativeDocumentMoniker": "src\\UsersPage.css",
-              "ToolTip": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\UsersPage.css",
-              "RelativeToolTip": "src\\UsersPage.css",
-              "ViewState": "AQIAABcAAAAAAAAAAAAcwDcAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-08-28T21:05:47.653Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "UsersPage.js",
               "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\UsersPage.js",
               "RelativeDocumentMoniker": "src\\UsersPage.js",
               "ToolTip": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\UsersPage.js",
               "RelativeToolTip": "src\\UsersPage.js",
-              "ViewState": "AQIAAIwAAAAAAAAAAAAowJ0AAAArAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAA8AAABWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-08-27T14:37:27.812Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "RegisterPage.js",
               "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\RegisterPage.js",
               "RelativeDocumentMoniker": "src\\RegisterPage.js",
               "ToolTip": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\RegisterPage.js",
               "RelativeToolTip": "src\\RegisterPage.js",
-              "ViewState": "AQIAABoAAACAMDMzMzMLwB8AAAApAAAA",
+              "ViewState": "AQIAAAIAAACAMDMzMzMLwA4AAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-08-28T19:50:41.281Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "FormPage.js",
               "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\FormPage.js",
               "RelativeDocumentMoniker": "src\\FormPage.js",
               "ToolTip": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\FormPage.js",
               "RelativeToolTip": "src\\FormPage.js",
-              "ViewState": "AQIAAL0AAAAAAAAAAAAAAMwAAAA3AAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAAGoAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-08-27T14:35:36.285Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
+              "Title": "App.js",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\App.js",
+              "RelativeDocumentMoniker": "src\\App.js",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\App.js",
+              "RelativeToolTip": "src\\App.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-27T13:57:18.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "UserDataContext.js",
               "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\UserDataContext.js",
               "RelativeDocumentMoniker": "src\\UserDataContext.js",
@@ -179,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 4,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\public\\index.html",
               "RelativeDocumentMoniker": "public\\index.html",
@@ -187,19 +132,7 @@
               "RelativeToolTip": "public\\index.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-08-27T14:00:13.031Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "App.js",
-              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\App.js",
-              "RelativeDocumentMoniker": "src\\App.js",
-              "ToolTip": "C:\\Users\\stefa\\Desktop\\esercizi react\\attendance-form\\src\\App.js",
-              "RelativeToolTip": "src\\App.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-08-27T13:57:18.677Z",
+              "WhenOpened": "2024-08-27T14:00:13.031Z",
               "EditorCaption": ""
             }
           ]
