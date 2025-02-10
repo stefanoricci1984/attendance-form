@@ -5,7 +5,7 @@ import "./FormPage.css"; // Importa il file CSS
 import { useNavigate } from "react-router-dom";
 
 const FormPage = () => {
-    const [year, setYear] = useState(2024); // Imposta il valore predefinito su 2024
+    const [year, setYear] = useState(2025); // Imposta il valore predefinito su 2024
     const [month, setMonth] = useState(new Date().getMonth() + 1);
     const [formData, setFormData] = useState({
         name: "",
@@ -77,7 +77,7 @@ const FormPage = () => {
 
     const handleAttendanceChange = (index, value) => {
         const updatedAttendance = [...formData.attendance];
-        if (!updatedAttendance[index].isHoliday) { // Permette il cambiamento solo se non è festivo
+        if (!updatedAttendance[index].isHoliday) { // Permette il cambiamento solo se non Ã¨ festivo
             updatedAttendance[index].attendance = value;
             setFormData((prevState) => ({
                 ...prevState,
@@ -220,6 +220,8 @@ const FormPage = () => {
                                             <option value="Roll(2)">Roll(2)</option>
                                             <option value="Roll(3)">Roll(3)</option>
                                             <option value="Roll(4)">Roll(4)</option>
+                                            <option value="Roll(8)">Roll(8)</option>
+                                            <option value="Malattia">Malattia</option>
                                             <option value="Straordinario">Straordinario</option>
                                         </>
                                     )}
