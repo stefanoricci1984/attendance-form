@@ -7,7 +7,7 @@ import './UsersPage.css'; // Assicurati di importare il CSS aggiornato
 const UsersPage = () => {
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
-    const [year, setYear] = useState(2024);
+    const [year, setYear] = useState(2025);
     const [month, setMonth] = useState(new Date().getMonth() + 1);
 
     useEffect(() => {
@@ -37,6 +37,8 @@ const UsersPage = () => {
             case 'Roll(2)': return 'R(2)';
             case 'Roll(3)': return 'R(3)';
             case 'Roll(4)': return 'R(4)';
+            case 'Roll(8)': return 'R(8)';
+            case 'Malattia': return 'MAL';
             case 'Straordinario': return 'STR';
             default: return '';
         }
