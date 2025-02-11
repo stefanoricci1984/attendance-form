@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
-import './UsersPage.css'; // Assicurati di importare il CSS aggiornato
+import './UsersPage.css'; 
 
 const UsersPage = () => {
     const [users, setUsers] = useState([]);
@@ -123,7 +123,7 @@ const UsersPage = () => {
                     excelRow.getCell(index + 1).fill = {
                         type: 'pattern',
                         pattern: 'solid',
-                        fgColor: { argb: 'FFFF00' } // Colore giallo
+                        fgColor: { argb: 'FFFF00' } 
                     };
                 }
             });
