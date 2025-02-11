@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom'; // Importa il componente Link
-import './LoginPage.css'; // Assicurati di importare il CSS aggiornato
+import { Link } from 'react-router-dom'; 
+import './LoginPage.css'; 
 
 
 
