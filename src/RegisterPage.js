@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Importa il componente Link
+import { Link } from 'react-router-dom'; 
 import './RegisterPage.css'; // Importa il file CSS
 
 const RegisterPage = () => {
