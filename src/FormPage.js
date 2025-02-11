@@ -13,7 +13,7 @@ const FormPage = () => {
         attendance: [],
     });
     const [message, setMessage] = useState("");
-    const navigate = useNavigate(); // Usa useNavigate per gestire i reindirizzamenti
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -34,7 +34,7 @@ const FormPage = () => {
         // Sabato (6), Domenica (0)
         if (dayOfWeek === 0 || dayOfWeek === 6) return true;
 
-        // 1 Gennaio, 25-26 Dicembre, 1 Maggio, 8 Dicembre
+        
         const holidays = [
             { day: 1, month: 1 }, // 1 Gennaio
             { day: 6, month: 1 }, // Epifania
