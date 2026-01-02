@@ -5,7 +5,7 @@ import "./FormPage.css"; // Importa il file CSS
 import { useNavigate } from "react-router-dom";
 
 const FormPage = () => {
-    const [year, setYear] = useState(2025); // Imposta il valore predefinito su 2024
+    const [year, setYear] = useState(2026); // Imposta il valore predefinito su 2024
     const [month, setMonth] = useState(new Date().getMonth() + 1);
     const [formData, setFormData] = useState({
         name: "",
