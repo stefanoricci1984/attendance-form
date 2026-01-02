@@ -41,7 +41,7 @@ const FormPage = () => {
             { day: 25, month: 4 }, // Festa della Liberazione
             { day: 2, month: 6 }, // Festa della Repubblica
             { day: 29, month: 6 }, // San Pietro e Paolo
-            { day: 21, month: 4 }, // Pasquetta
+            { day: 6, month: 4 }, // Pasquetta
             { day: 15, month: 8 }, // Ferragosto
             { day: 1, month: 11 }, // Ognissanti
             { day: 25, month: 12 }, // Natale
