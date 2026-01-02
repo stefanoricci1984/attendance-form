@@ -7,7 +7,7 @@ import './UsersPage.css';
 const UsersPage = () => {
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
-    const [year, setYear] = useState(2025);
+    const [year, setYear] = useState(2026);
     const [month, setMonth] = useState(new Date().getMonth() + 1);
 
     useEffect(() => {
