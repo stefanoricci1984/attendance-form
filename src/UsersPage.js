@@ -257,30 +257,34 @@ const UsersPage = () => {
             <hr className="section-divider" />
             <h2 className="section-title">Gestione acronimi lavori</h2>
 
-            <div className="controls acronyms-form">
-                <label>
-                    Acronimo (max 3):
-                    <input
-                        className="nom"
-                        type="text"
-                        maxLength={3}
-                        value={newCode}
-                        onChange={(e) => setNewCode(e.target.value.toUpperCase())}
-                    />
-                </label>
-                <label className="description-field">
-                    Descrizione:
-                    <input
-                        className="nom"
-                        type="text"
-                        value={newDescription}
-                        onChange={(e) => setNewDescription(e.target.value)}
-                    />
-                </label>
-                <button className="bty" type="button" onClick={handleCreate}>Crea nuovo</button>
-            </div>
+            <div className="acronyms-section">
+                <div className="acronyms-form">
+                    <label className="acronym-field">
+                        Acronimo (max 3):
+                        <input
+                            className="nom"
+                            type="text"
+                            maxLength={3}
+                            value={newCode}
+                            onChange={(e) => setNewCode(e.target.value.toUpperCase())}
+                        />
+                    </label>
+                    <label className="description-field">
+                        Descrizione (max 20):
+                        <input
+                            className="nom"
+                            type="text"
+                            maxLength={20}
+                            value={newDescription}
+                            onChange={(e) => setNewDescription(e.target.value)}
+                        />
+                    </label>
+                    <button className="acronyms-create-btn" type="button" onClick={handleCreate}>
+                        Crea nuovo
+                    </button>
+                </div>
 
-            <table className="acronyms-table">
+                <table className="acronyms-table">
                 <thead>
                     <tr>
                         <th>Acronimo</th>
@@ -311,6 +315,7 @@ const UsersPage = () => {
                                             <input
                                                 className="nom"
                                                 type="text"
+                                                maxLength={20}
                                                 value={editDescription}
                                                 onChange={(e) => setEditDescription(e.target.value)}
                                             />
@@ -334,7 +339,8 @@ const UsersPage = () => {
                         ))
                     )}
                 </tbody>
-            </table>
+                </table>
+            </div>
         </div>
     );
 };
