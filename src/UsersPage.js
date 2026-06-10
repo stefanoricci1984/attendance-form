@@ -258,41 +258,40 @@ const UsersPage = () => {
             <h2 className="section-title">Gestione acronimi lavori</h2>
 
             <div className="acronyms-section">
-                <div className="acronyms-form">
-                    <label className="acronym-field">
-                        Acronimo (max 3):
-                        <input
-                            className="nom"
-                            type="text"
-                            maxLength={3}
-                            value={newCode}
-                            onChange={(e) => setNewCode(e.target.value.toUpperCase())}
-                        />
-                    </label>
-                    <label className="description-field">
-                        Descrizione (max 20):
-                        <input
-                            className="nom"
-                            type="text"
-                            maxLength={20}
-                            value={newDescription}
-                            onChange={(e) => setNewDescription(e.target.value)}
-                        />
-                    </label>
-                    <button className="acronyms-create-btn" type="button" onClick={handleCreate}>
-                        Crea nuovo
-                    </button>
-                </div>
-
                 <table className="acronyms-table">
                 <thead>
                     <tr>
-                        <th>Acronimo</th>
-                        <th>Descrizione</th>
+                        <th>Acronimo (max 3)</th>
+                        <th>Descrizione (max 20)</th>
                         <th>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr className="acronyms-create-row">
+                        <td>
+                            <input
+                                className="nom acronym-input"
+                                type="text"
+                                maxLength={3}
+                                placeholder="Es. DSS"
+                                value={newCode}
+                                onChange={(e) => setNewCode(e.target.value.toUpperCase())}
+                            />
+                        </td>
+                        <td>
+                            <input
+                                className="nom"
+                                type="text"
+                                maxLength={20}
+                                placeholder="Es. Innova Puglia"
+                                value={newDescription}
+                                onChange={(e) => setNewDescription(e.target.value)}
+                            />
+                        </td>
+                        <td className="actions-cell">
+                            <button type="button" onClick={handleCreate}>Crea nuovo</button>
+                        </td>
+                    </tr>
                     {acronyms.length === 0 ? (
                         <tr>
                             <td colSpan={3}>Nessun acronimo creato.</td>
