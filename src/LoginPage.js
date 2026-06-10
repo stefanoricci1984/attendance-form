@@ -19,8 +19,10 @@ const LoginPage = () => {
                 email,
                 password,
             });
-            const token = response.data.token;
+            const { token, name, email: userEmail } = response.data;
             localStorage.setItem('token', token);
+            if (name) localStorage.setItem('userName', name);
+            if (userEmail) localStorage.setItem('userEmail', userEmail);
             navigate('/form');
         } catch (err) {
             console.error(err);
