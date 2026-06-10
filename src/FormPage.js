@@ -6,6 +6,46 @@ import { useNavigate } from "react-router-dom";
 
 const API_BASE = "https://attendance-app-backend-nine.vercel.app";
 
+const HOLIDAYS = [
+    { day: 1, month: 1 },
+    { day: 6, month: 1 },
+    { day: 25, month: 4 },
+    { day: 2, month: 6 },
+    { day: 29, month: 6 },
+    { day: 6, month: 4 },
+    { day: 15, month: 8 },
+    { day: 1, month: 11 },
+    { day: 25, month: 12 },
+    { day: 26, month: 12 },
+    { day: 1, month: 5 },
+    { day: 8, month: 12 },
+];
+
+const isHoliday = (date) => {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const dayOfWeek = date.getDay();
+
+    if (dayOfWeek === 0 || dayOfWeek === 6) return true;
+
+    return HOLIDAYS.some(h => h.day === day && h.month === month);
+};
+
+const generateDaysInMonth = (year, month) => {
+    const daysInMonth = getDaysInMonth(new Date(year, month - 1));
+    const startDate = startOfMonth(new Date(year, month - 1));
+    return Array.from({ length: daysInMonth }, (_, i) => {
+        const date = addDays(startDate, i);
+        return {
+            day: i + 1,
+            weekday: format(date, "EEEE"),
+            attendance: isHoliday(date) ? "Festivo" : "Smart",
+            isHoliday: isHoliday(date),
+            workAcronym: "",
+        };
+    });
+};
+
 const FormPage = () => {
     const [year, setYear] = useState(2026);
     const [month, setMonth] = useState(new Date().getMonth() + 1);
@@ -36,50 +76,6 @@ const FormPage = () => {
         };
         fetchAcronyms();
     }, []);
-
-    useEffect(() => {
-        handleMonthYearChange();
-    }, [year, month]);
-
-    const isHoliday = (date) => {
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const dayOfWeek = date.getDay();
-
-        if (dayOfWeek === 0 || dayOfWeek === 6) return true;
-
-        const holidays = [
-            { day: 1, month: 1 },
-            { day: 6, month: 1 },
-            { day: 25, month: 4 },
-            { day: 2, month: 6 },
-            { day: 29, month: 6 },
-            { day: 6, month: 4 },
-            { day: 15, month: 8 },
-            { day: 1, month: 11 },
-            { day: 25, month: 12 },
-            { day: 26, month: 12 },
-            { day: 1, month: 5 },
-            { day: 8, month: 12 },
-        ];
-
-        return holidays.some(h => h.day === day && h.month === month);
-    };
-
-    const generateDaysInMonth = (year, month) => {
-        const daysInMonth = getDaysInMonth(new Date(year, month - 1));
-        const startDate = startOfMonth(new Date(year, month - 1));
-        return Array.from({ length: daysInMonth }, (_, i) => {
-            const date = addDays(startDate, i);
-            return {
-                day: i + 1,
-                weekday: format(date, "EEEE"),
-                attendance: isHoliday(date) ? "Festivo" : "Smart",
-                isHoliday: isHoliday(date),
-                workAcronym: "",
-            };
-        });
-    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -118,6 +114,14 @@ const FormPage = () => {
             attendance: days,
         }));
     };
+
+    useEffect(() => {
+        const days = generateDaysInMonth(year, month);
+        setFormData((prevState) => ({
+            ...prevState,
+            attendance: days,
+        }));
+    }, [year, month]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -291,7 +295,6 @@ const FormPage = () => {
             </form>
             {message && <p>{message}</p>}
         </div>
-             
     );
 };
 
