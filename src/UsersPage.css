@@ -145,13 +145,14 @@ td {
 .acronyms-form {
     display: flex;
     align-items: flex-end;
-    gap: 12px;
+    gap: 8px;
     margin-bottom: 12px;
     width: 100%;
 }
 
 .acronyms-form label {
     margin: 0;
+    width: auto;
 }
 
 .acronyms-form .acronym-field {
@@ -167,8 +168,8 @@ td {
 .acronyms-create-btn {
     flex: 0 0 auto;
     width: auto;
-    padding: 10px 14px;
-    margin: 0 0 2px 0;
+    padding: 8px 12px;
+    margin: 2px 0;
     background-color: #4CAF50;
     color: white;
     border: none;
