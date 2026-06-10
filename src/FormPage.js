@@ -62,7 +62,41 @@ const FormPage = () => {
         const token = localStorage.getItem("token");
         if (!token) {
             navigate("/");
+            return;
         }
+
+        const loadUserProfile = async () => {
+            const storedName = localStorage.getItem("userName");
+            const storedEmail = localStorage.getItem("userEmail");
+
+            if (storedName && storedEmail) {
+                setFormData((prevState) => ({
+                    ...prevState,
+                    name: storedName,
+                    email: storedEmail,
+                }));
+            }
+
+            try {
+                const response = await axios.get(`${API_BASE}/api/me`, {
+                    headers: { Authorization: token },
+                });
+                const { name, email } = response.data;
+                setFormData((prevState) => ({
+                    ...prevState,
+                    name,
+                    email,
+                }));
+                localStorage.setItem("userName", name);
+                localStorage.setItem("userEmail", email);
+            } catch (error) {
+                if (!storedName || !storedEmail) {
+                    console.error("Errore caricamento profilo utente:", error);
+                }
+            }
+        };
+
+        loadUserProfile();
     }, [navigate]);
 
     useEffect(() => {
@@ -76,14 +110,6 @@ const FormPage = () => {
         };
         fetchAcronyms();
     }, []);
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-    };
 
     const handleAttendanceChange = (index, value) => {
         const updatedAttendance = [...formData.attendance];
@@ -153,11 +179,11 @@ const FormPage = () => {
 
             alert("Invio effettuato correttamente!");
             setMessage("");
-            setFormData({
-                name: "",
-                email: "",
+            setFormData((prevState) => ({
+                name: prevState.name,
+                email: prevState.email,
                 attendance: [],
-            });
+            }));
             handleMonthYearChange();
         } catch (err) {
             console.error(err);
@@ -167,6 +193,8 @@ const FormPage = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("userEmail");
         navigate("/");
     };
 
@@ -186,9 +214,9 @@ const FormPage = () => {
                             type="text"
                             name="name"
                             value={formData.name}
-                            onChange={handleInputChange}
+                            readOnly
                             required
-                            className="form-input2"
+                            className="form-input2 form-input-locked"
                         />
                     </label>
                 </div>
@@ -199,9 +227,9 @@ const FormPage = () => {
                             type="email"
                             name="email"
                             value={formData.email}
-                            onChange={handleInputChange}
+                            readOnly
                             required
-                            className="form-input2"
+                            className="form-input2 form-input-locked"
                         />
                     </label>
                 </div>
