@@ -48,6 +48,12 @@ label {
     color: #fff;
 }
 
+.form-input-locked {
+    background-color: #444;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
 
 button {
     width: 100%;
