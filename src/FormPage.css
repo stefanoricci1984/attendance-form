@@ -102,3 +102,30 @@ h3 {
     color: #ffffff;
     margin-bottom: 20px;
 }
+
+.day-row {
+    margin-bottom: 15px;
+}
+
+.day-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.day-selects {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.day-select {
+    width: auto;
+    min-width: 120px;
+    flex: 1;
+}
+
+.festivo-label {
+    margin-left: 10px;
+    color: #aaa;
+}
