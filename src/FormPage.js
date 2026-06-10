@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { format, getDaysInMonth, startOfMonth, addDays } from "date-fns";
-import "./FormPage.css"; // Importa il file CSS
+import "./FormPage.css";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE = "https://attendance-app-backend-nine.vercel.app";
+
 const FormPage = () => {
-    const [year, setYear] = useState(2026); // Imposta il valore predefinito su 2024
+    const [year, setYear] = useState(2026);
     const [month, setMonth] = useState(new Date().getMonth() + 1);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         attendance: [],
     });
+    const [acronyms, setAcronyms] = useState([]);
     const [message, setMessage] = useState("");
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -23,31 +26,41 @@ const FormPage = () => {
     }, [navigate]);
 
     useEffect(() => {
-        handleMonthYearChange(); // Genera i giorni all'avvio della pagina
+        const fetchAcronyms = async () => {
+            try {
+                const response = await axios.get(`${API_BASE}/api/acronyms`);
+                setAcronyms(response.data);
+            } catch (error) {
+                console.error("Errore caricamento acronimi:", error);
+            }
+        };
+        fetchAcronyms();
+    }, []);
+
+    useEffect(() => {
+        handleMonthYearChange();
     }, [year, month]);
 
     const isHoliday = (date) => {
         const day = date.getDate();
-        const month = date.getMonth() + 1; // Mesi da 0 a 11
-        const dayOfWeek = date.getDay(); // Giorni della settimana da 0 (domenica) a 6 (sabato)
+        const month = date.getMonth() + 1;
+        const dayOfWeek = date.getDay();
 
-        // Sabato (6), Domenica (0)
         if (dayOfWeek === 0 || dayOfWeek === 6) return true;
 
-        
         const holidays = [
-            { day: 1, month: 1 }, // 1 Gennaio
-            { day: 6, month: 1 }, // Epifania
-            { day: 25, month: 4 }, // Festa della Liberazione
-            { day: 2, month: 6 }, // Festa della Repubblica
-            { day: 29, month: 6 }, // San Pietro e Paolo
-            { day: 6, month: 4 }, // Pasquetta
-            { day: 15, month: 8 }, // Ferragosto
-            { day: 1, month: 11 }, // Ognissanti
-            { day: 25, month: 12 }, // Natale
-            { day: 26, month: 12 }, // Santo Stefano
-            { day: 1, month: 5 }, // Festa del Lavoro
-            { day: 8, month: 12 }, // Immacolata Concezione
+            { day: 1, month: 1 },
+            { day: 6, month: 1 },
+            { day: 25, month: 4 },
+            { day: 2, month: 6 },
+            { day: 29, month: 6 },
+            { day: 6, month: 4 },
+            { day: 15, month: 8 },
+            { day: 1, month: 11 },
+            { day: 25, month: 12 },
+            { day: 26, month: 12 },
+            { day: 1, month: 5 },
+            { day: 8, month: 12 },
         ];
 
         return holidays.some(h => h.day === day && h.month === month);
@@ -63,6 +76,7 @@ const FormPage = () => {
                 weekday: format(date, "EEEE"),
                 attendance: isHoliday(date) ? "Festivo" : "Smart",
                 isHoliday: isHoliday(date),
+                workAcronym: "",
             };
         });
     };
@@ -77,8 +91,19 @@ const FormPage = () => {
 
     const handleAttendanceChange = (index, value) => {
         const updatedAttendance = [...formData.attendance];
-        if (!updatedAttendance[index].isHoliday) { // Permette il cambiamento solo se non è festivo
+        if (!updatedAttendance[index].isHoliday) {
             updatedAttendance[index].attendance = value;
+            setFormData((prevState) => ({
+                ...prevState,
+                attendance: updatedAttendance,
+            }));
+        }
+    };
+
+    const handleWorkAcronymChange = (index, value) => {
+        const updatedAttendance = [...formData.attendance];
+        if (!updatedAttendance[index].isHoliday) {
+            updatedAttendance[index].workAcronym = value;
             setFormData((prevState) => ({
                 ...prevState,
                 attendance: updatedAttendance,
@@ -98,19 +123,27 @@ const FormPage = () => {
         e.preventDefault();
 
         try {
-            const token = localStorage.getItem("token"); // Recupera il token JWT
+            const token = localStorage.getItem("token");
             if (!token) {
                 alert("Non sei autenticato. Effettua il login per inviare i dati.");
-                return navigate("/"); // Reindirizza alla pagina di login se non autenticato
+                return navigate("/");
             }
 
-            await axios.post("https://attendance-app-backend-nine.vercel.app/api/users", {
+            const missingAcronym = formData.attendance.find(
+                (day) => !day.isHoliday && !day.workAcronym
+            );
+            if (missingAcronym) {
+                alert(`Seleziona un acronimo lavoro per il giorno ${missingAcronym.day}`);
+                return;
+            }
+
+            await axios.post(`${API_BASE}/api/users`, {
                 ...formData,
                 year,
                 month,
             }, {
                 headers: {
-                    Authorization: token, // Invia il token JWT nelle richieste protette
+                    Authorization: token,
                 },
             });
 
@@ -121,21 +154,22 @@ const FormPage = () => {
                 email: "",
                 attendance: [],
             });
+            handleMonthYearChange();
         } catch (err) {
             console.error(err);
-            alert("Errore durante l'invio dei dati");
+            alert(err.response?.data?.error || "Errore durante l'invio dei dati");
         }
     };
 
     const handleLogout = () => {
-        localStorage.removeItem("token"); // Rimuove il token
-        navigate("/"); // Reindirizza alla pagina di login
+        localStorage.removeItem("token");
+        navigate("/");
     };
 
     return (
         <div className="container">
             <h1>Gestione Giorni Lavorativi Neotech-Form</h1>
-            <div class="lgt-container">
+            <div className="lgt-container">
                 <button className="lgt" onClick={handleLogout} style={{ marginBottom: "15px" }}>
                     Logout
                 </button>
@@ -201,10 +235,10 @@ const FormPage = () => {
                         {format(new Date(year, month - 1), "MMMM yyyy")}:
                     </h3>
                     {formData.attendance.map((day, index) => (
-                        <div key={index} style={{ marginBottom: "15px" }}>
-                            <label>
-                                {day.weekday}, {day.day}:
-                                <select className="frm"
+                        <div key={index} className="day-row">
+                            <span className="day-label">{day.weekday}, {day.day}:</span>
+                            <div className="day-selects">
+                                <select className="frm day-select"
                                     value={day.attendance}
                                     onChange={(e) =>
                                         handleAttendanceChange(index, e.target.value)
@@ -226,10 +260,28 @@ const FormPage = () => {
                                         </>
                                     )}
                                 </select>
-                                {day.isHoliday && (
-                                    <span style={{ marginLeft: "10px" }}>Festivo</span>
+                                {!day.isHoliday && (
+                                    <select
+                                        className="frm day-select"
+                                        value={day.workAcronym}
+                                        onChange={(e) =>
+                                            handleWorkAcronymChange(index, e.target.value)
+                                        }
+                                        required
+                                        title="Seleziona il lavoro/progetto"
+                                    >
+                                        <option value="">— Lavoro —</option>
+                                        {acronyms.map((a) => (
+                                            <option key={a.id} value={a.code} title={a.description}>
+                                                {a.code}
+                                            </option>
+                                        ))}
+                                    </select>
                                 )}
-                            </label>
+                                {day.isHoliday && (
+                                    <span className="festivo-label">Festivo</span>
+                                )}
+                            </div>
                         </div>
                     ))}
                 </div>
