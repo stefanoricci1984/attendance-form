@@ -142,55 +142,39 @@ td {
     margin: 0 auto;
 }
 
-.acronyms-form {
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
-    margin-bottom: 12px;
-    width: 100%;
-}
-
-.acronyms-form label {
-    margin: 0;
-    width: auto;
-}
-
-.acronyms-form .acronym-field {
-    flex: 0 0 22%;
-    min-width: 100px;
-}
-
-.acronyms-form .description-field {
-    flex: 1;
-    min-width: 0;
-}
-
-.acronyms-create-btn {
-    flex: 0 0 auto;
-    width: auto;
-    padding: 8px 12px;
-    margin: 2px 0;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.85em;
-    white-space: nowrap;
-}
-
-.acronyms-create-btn:hover {
-    background-color: #45a049;
-}
-
 .acronyms-table {
     width: 100%;
-    max-width: 800px;
-    margin: 0;
+    margin-top: 0;
+    table-layout: fixed;
+}
+
+.acronyms-table th:nth-child(1),
+.acronyms-table td:nth-child(1) {
+    width: 22%;
+}
+
+.acronyms-table th:nth-child(2),
+.acronyms-table td:nth-child(2) {
+    width: 48%;
+}
+
+.acronyms-table th:nth-child(3),
+.acronyms-table td:nth-child(3) {
+    width: 30%;
 }
 
 .acronyms-table input.nom {
     width: 100%;
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+.acronyms-create-row td {
+    vertical-align: middle;
+}
+
+.acronyms-table .acronym-input {
+    text-transform: uppercase;
 }
 
 .actions-cell button {
