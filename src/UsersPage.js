@@ -2,18 +2,35 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
-import './UsersPage.css'; 
+import './UsersPage.css';
+
+const API_BASE = 'https://attendance-app-backend-nine.vercel.app';
 
 const UsersPage = () => {
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [year, setYear] = useState(2026);
     const [month, setMonth] = useState(new Date().getMonth() + 1);
+    const [acronyms, setAcronyms] = useState([]);
+    const [newCode, setNewCode] = useState('');
+    const [newDescription, setNewDescription] = useState('');
+    const [editingId, setEditingId] = useState(null);
+    const [editCode, setEditCode] = useState('');
+    const [editDescription, setEditDescription] = useState('');
+
+    const fetchAcronyms = async () => {
+        try {
+            const response = await axios.get(`${API_BASE}/api/acronyms`);
+            setAcronyms(response.data);
+        } catch (error) {
+            console.error('Errore caricamento acronimi:', error);
+        }
+    };
 
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('https://attendance-app-backend-nine.vercel.app/api/users');
+                const response = await axios.get(`${API_BASE}/api/users`);
                 setUsers(response.data);
             } catch (error) {
                 console.error('Errore durante il recupero dei dati:', error);
@@ -21,6 +38,7 @@ const UsersPage = () => {
         };
 
         fetchUsers();
+        fetchAcronyms();
     }, []);
 
     useEffect(() => {
@@ -44,11 +62,57 @@ const UsersPage = () => {
         }
     };
 
+    const handleCreate = async () => {
+        if (!newCode || !newDescription) {
+            alert('Acronimo e descrizione obbligatori');
+            return;
+        }
+        try {
+            await axios.post(`${API_BASE}/api/acronyms`, {
+                code: newCode,
+                description: newDescription,
+            });
+            setNewCode('');
+            setNewDescription('');
+            fetchAcronyms();
+        } catch (error) {
+            alert(error.response?.data?.error || 'Errore durante la creazione');
+        }
+    };
+
+    const handleStartEdit = (acronym) => {
+        setEditingId(acronym.id);
+        setEditCode(acronym.code);
+        setEditDescription(acronym.description);
+    };
+
+    const handleSaveEdit = async () => {
+        try {
+            await axios.put(`${API_BASE}/api/acronyms/${editingId}`, {
+                code: editCode,
+                description: editDescription,
+            });
+            setEditingId(null);
+            fetchAcronyms();
+        } catch (error) {
+            alert(error.response?.data?.error || 'Errore durante la modifica');
+        }
+    };
+
+    const handleDelete = async (id) => {
+        if (!window.confirm('Eliminare questo acronimo?')) return;
+        try {
+            await axios.delete(`${API_BASE}/api/acronyms/${id}`);
+            fetchAcronyms();
+        } catch (error) {
+            alert(error.response?.data?.error || 'Errore durante l\'eliminazione');
+        }
+    };
+
     const handleExport = async () => {
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet('Users');
 
-        // Intestazioni - Rimuovi "Email"
         const headerRow = ['Nome', 'Mese', ...Array.from({ length: 31 }, (_, i) => `${i + 1}`)];
         const weekDaysRow = ['', '', ...Array.from({ length: 31 }, (_, i) => {
             const date = new Date(year, month - 1, i + 1);
@@ -60,50 +124,19 @@ const UsersPage = () => {
 
         worksheet.getColumn(1).width = 25;
         worksheet.getColumn(2).width = 12;
-        worksheet.getColumn(3).width = 5;
-        worksheet.getColumn(4).width = 5;
-        worksheet.getColumn(5).width = 5;
-        worksheet.getColumn(6).width = 5;
-        worksheet.getColumn(7).width = 5;
-        worksheet.getColumn(8).width = 5;
-        worksheet.getColumn(9).width = 5;
-        worksheet.getColumn(10).width = 5;
-        worksheet.getColumn(11).width = 5;
-        worksheet.getColumn(12).width = 5;
-        worksheet.getColumn(13).width = 5;
-        worksheet.getColumn(14).width = 5;
-        worksheet.getColumn(15).width = 5;
-        worksheet.getColumn(16).width = 5;
-        worksheet.getColumn(17).width = 5;
-        worksheet.getColumn(18).width = 5;
-        worksheet.getColumn(19).width = 5;
-        worksheet.getColumn(20).width = 5;
-        worksheet.getColumn(21).width = 5;
-        worksheet.getColumn(22).width = 5;
-        worksheet.getColumn(23).width = 5;
-        worksheet.getColumn(24).width = 5;
-        worksheet.getColumn(25).width = 5;
-        worksheet.getColumn(26).width = 5;
-        worksheet.getColumn(27).width = 5;
-        worksheet.getColumn(28).width = 5;
-        worksheet.getColumn(29).width = 5;
-        worksheet.getColumn(30).width = 5;
-        worksheet.getColumn(31).width = 5;
-        worksheet.getColumn(32).width = 5;
-        worksheet.getColumn(33).width = 5;
-
-
-        // Imposta in grassetto le intestazioni dei giorni
-        for (let i = 1; i <= 31; i++) {
-            worksheet.getCell(1, i + 2).font = { bold: true }; // Intestazioni dei giorni
-        }
-        // Imposta in grassetto le intestazioni dei giorni
-        for (let i = 1; i <= 31; i++) {
-            worksheet.getCell(2, i + 2).font = { bold: true }; // Intestazioni dei giorni
+        for (let i = 3; i <= 33; i++) {
+            worksheet.getColumn(i).width = 5;
         }
 
-        worksheet.getCell('A1').font = { bold: true }; // Intestazione nome
-        worksheet.getCell('B1').font = { bold: true }; // Intestazione mese
+        for (let i = 1; i <= 31; i++) {
+            worksheet.getCell(1, i + 2).font = { bold: true };
+        }
+        for (let i = 1; i <= 31; i++) {
+            worksheet.getCell(2, i + 2).font = { bold: true };
+        }
+
+        worksheet.getCell('A1').font = { bold: true };
+        worksheet.getCell('B1').font = { bold: true };
 
         filteredUsers.forEach(user => {
             const row = [
@@ -117,28 +150,22 @@ const UsersPage = () => {
 
             const excelRow = worksheet.addRow(row);
 
-            // Colora le celle dei festivi
             row.forEach((value, index) => {
                 if (index >= 2 && value === '') {
                     excelRow.getCell(index + 1).fill = {
                         type: 'pattern',
                         pattern: 'solid',
-                        fgColor: { argb: 'FFFF00' } 
+                        fgColor: { argb: 'FFFF00' }
                     };
                 }
             });
         });
 
-        // Scrivi il file Excel
         workbook.xlsx.writeBuffer().then((buffer) => {
             const blob = new Blob([buffer], { type: 'application/octet-stream' });
             saveAs(blob, `users_${year}_${month}.xlsx`);
         });
     };
-
-    if (users.length === 0) {
-        return <p>Nessun utente trovato.</p>;
-    }
 
     return (
         <div className="container">
@@ -170,8 +197,9 @@ const UsersPage = () => {
                 </label>
                 <button className="bty" onClick={handleExport}>Export to Excel</button>
             </div>
+
             {filteredUsers.length === 0 ? (
-                <p>Nessun utente trovato per il mese selezionato.</p>
+                <p className="empty-message">Nessun utente trovato per il mese selezionato.</p>
             ) : (
                 <table>
                     <thead>
@@ -193,21 +221,120 @@ const UsersPage = () => {
                     </thead>
                     <tbody>
                         {filteredUsers.map((user) => (
-                            <tr key={user.name}>
-                                <td>{user.name}</td>
-                                <td>{new Date(0, user.month - 1).toLocaleString('it-IT', { month: 'long' })}</td>
-                                {Array.from({ length: 31 }, (_, i) => (
-                                    <td key={i + 1}>
-                                        {user.attendance.find((a) => a.day === i + 1)?.attendance
-                                            ? mapAttendance(user.attendance.find((a) => a.day === i + 1).attendance)
-                                            : ''}
+                            <React.Fragment key={`${user.name}-${user.month}-${user.year}`}>
+                                <tr>
+                                    <td rowSpan={2}>{user.name}</td>
+                                    <td rowSpan={2}>
+                                        {new Date(0, user.month - 1).toLocaleString('it-IT', { month: 'long' })}
                                     </td>
-                                ))}
-                            </tr>
+                                    {Array.from({ length: 31 }, (_, i) => {
+                                        const dayData = user.attendance.find((a) => a.day === i + 1);
+                                        return (
+                                            <td key={i + 1}>
+                                                {dayData?.attendance
+                                                    ? mapAttendance(dayData.attendance)
+                                                    : ''}
+                                            </td>
+                                        );
+                                    })}
+                                </tr>
+                                <tr className="work-acronym-row">
+                                    {Array.from({ length: 31 }, (_, i) => {
+                                        const dayData = user.attendance.find((a) => a.day === i + 1);
+                                        return (
+                                            <td key={i + 1}>
+                                                {dayData?.workAcronym || ''}
+                                            </td>
+                                        );
+                                    })}
+                                </tr>
+                            </React.Fragment>
                         ))}
                     </tbody>
                 </table>
             )}
+
+            <hr className="section-divider" />
+            <h2 className="section-title">Gestione acronimi lavori</h2>
+
+            <div className="controls acronyms-form">
+                <label>
+                    Acronimo (max 3):
+                    <input
+                        className="nom"
+                        type="text"
+                        maxLength={3}
+                        value={newCode}
+                        onChange={(e) => setNewCode(e.target.value.toUpperCase())}
+                    />
+                </label>
+                <label className="description-field">
+                    Descrizione:
+                    <input
+                        className="nom"
+                        type="text"
+                        value={newDescription}
+                        onChange={(e) => setNewDescription(e.target.value)}
+                    />
+                </label>
+                <button className="bty" type="button" onClick={handleCreate}>Crea nuovo</button>
+            </div>
+
+            <table className="acronyms-table">
+                <thead>
+                    <tr>
+                        <th>Acronimo</th>
+                        <th>Descrizione</th>
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {acronyms.length === 0 ? (
+                        <tr>
+                            <td colSpan={3}>Nessun acronimo creato.</td>
+                        </tr>
+                    ) : (
+                        acronyms.map((a) => (
+                            <tr key={a.id}>
+                                {editingId === a.id ? (
+                                    <>
+                                        <td>
+                                            <input
+                                                className="nom"
+                                                type="text"
+                                                maxLength={3}
+                                                value={editCode}
+                                                onChange={(e) => setEditCode(e.target.value.toUpperCase())}
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                className="nom"
+                                                type="text"
+                                                value={editDescription}
+                                                onChange={(e) => setEditDescription(e.target.value)}
+                                            />
+                                        </td>
+                                        <td className="actions-cell">
+                                            <button type="button" onClick={handleSaveEdit}>Salva</button>
+                                            <button type="button" onClick={() => setEditingId(null)}>Annulla</button>
+                                        </td>
+                                    </>
+                                ) : (
+                                    <>
+                                        <td>{a.code}</td>
+                                        <td>{a.description}</td>
+                                        <td className="actions-cell">
+                                            <button type="button" onClick={() => handleStartEdit(a)}>Modifica</button>
+                                            <button type="button" onClick={() => handleDelete(a.id)}>Elimina</button>
+                                        </td>
+                                    </>
+                                )}
+                            </tr>
+                        ))
+                    )}
+                </tbody>
+            </table>
         </div>
     );
 };
