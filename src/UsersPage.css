@@ -119,3 +119,48 @@ td {
         font-size: 0.75em; 
     }
 }
+
+.empty-message {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.section-divider {
+    margin: 40px 0;
+    border: none;
+    border-top: 1px solid #444;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.acronyms-form {
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.description-field {
+    width: 250px;
+}
+
+.acronyms-table {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.acronyms-table input.nom {
+    width: 100%;
+}
+
+.actions-cell button {
+    margin: 2px 4px;
+    width: auto;
+}
+
+.work-acronym-row td {
+    font-size: 0.65em;
+    color: #aaa;
+}
