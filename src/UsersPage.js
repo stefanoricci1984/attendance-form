@@ -255,7 +255,7 @@ const UsersPage = () => {
             )}
 
             <hr className="section-divider" />
-            <h2 className="section-title"></h2>
+            <h2 className="section-title">Acronimi lavoro</h2>
 
             <div className="acronyms-section">
                 <table className="acronyms-table">
