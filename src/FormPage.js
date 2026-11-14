@@ -19,6 +19,7 @@ const HOLIDAYS = [
     { day: 26, month: 12 },
     { day: 1, month: 5 },
     { day: 8, month: 12 },
+    { day: 29, month: 3 },
 ];
 
 const isHoliday = (date) => {
@@ -243,6 +244,7 @@ const FormPage = () => {
                             <option value={2024}>2024</option>
                             <option value={2025}>2025</option>
                             <option value={2026}>2026</option>
+                            <option value={2027}>2027</option>
                         </select>
                     </label>
                 </div>
